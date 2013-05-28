@@ -462,6 +462,7 @@ NSString * const PKRevealControllerRecognizesResetTapOnFrontViewKey = @"PKReveal
 
 - (void)removeLeftViewControllerFromHierarchy
 {
+    return;
     if ([self.childViewControllers containsObject:self.leftViewController])
     {
         [self.leftViewContainer removeFromSuperview];
