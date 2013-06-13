@@ -198,6 +198,7 @@ NSString * const PKRevealControllerRecognizesResetTapOnFrontViewKey = @"PKReveal
     {
         if ([self hasLeftViewController])
         {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"PKRevealWillPresentLeftViewController" object:self];
             [self showLeftViewControllerAnimated:animated completion:completion];
         }
         
@@ -211,6 +212,8 @@ NSString * const PKRevealControllerRecognizesResetTapOnFrontViewKey = @"PKReveal
     }
     else if (controller == self.frontViewController)
     {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"PKRevealWillPresentFrontViewController" object:self];
+        
         [self showFrontViewControllerAnimated:animated completion:completion];
     }
 }
