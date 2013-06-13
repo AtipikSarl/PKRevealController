@@ -51,6 +51,7 @@
 @end
 
 @implementation PKRevealController
+@synthesize dontRemoveLeftViewControllerWhenHidden;
 
 NSString * const PKRevealControllerAnimationDurationKey = @"PKRevealControllerAnimationDurationKey";
 NSString * const PKRevealControllerAnimationCurveKey = @"PKRevealControllerAnimationCurveKey";
@@ -462,7 +463,9 @@ NSString * const PKRevealControllerRecognizesResetTapOnFrontViewKey = @"PKReveal
 
 - (void)removeLeftViewControllerFromHierarchy
 {
-    return;
+    if(self.dontRemoveLeftViewControllerWhenHidden){
+        return;
+    }
     if ([self.childViewControllers containsObject:self.leftViewController])
     {
         [self.leftViewContainer removeFromSuperview];
